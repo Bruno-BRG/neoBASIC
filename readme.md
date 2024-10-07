@@ -21,6 +21,8 @@ This project is a simple interpreter for a basic programming language inspired b
 
 Once you run the interpreter, you can use the following commands:
 
+### English
+
 - `print`: Print a message (e.g., `print 'Hello, World!'`).
 - `input`: Get input from the user (e.g., `let name = input 'What is your name'`).
 - `let`: Assign a value to a variable (e.g., `let x = 10`).
@@ -36,6 +38,24 @@ Once you run the interpreter, you can use the following commands:
 - `edit`: Edit the program.
 - `delete`: Delete the program.
 - `quit`: Exit the program.
+
+### Português
+
+- `print`: Imprime uma mensagem (Exemplo: `print 'Olá, Mundo!'`).
+- `input`: Recebe um valor do usuário (Exemplo: `let name = input 'Qual seu nome'`).
+- `let`: Salva um valor a uma variável (Exemplo: `let x = 10`).
+- `if`: Condição (Exemplo: `if x > 10 then print 'x é maior que 10'`).
+- `goto`: Vai para uma linha específica (Exemplo: `goto 10`).
+- `end`: Termina o programa.
+- `list`: Lista todos os comandos no programa.
+- `run`: Executa o programa.
+- `clear`: Limpa a tela.
+- `save`: Salva o programa.
+- `load`: Carrega o programa.
+- `new`: Inicia um novo programa.
+- `edit`: Edita o programa atual.
+- `delete`: Deleta o programa atual.
+- `quit`: Sair do programa atual.
 
 ## Contributing
 
