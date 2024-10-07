@@ -6,11 +6,11 @@ This project is a simple interpreter for a basic programming language inspired b
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/basic-interpreter.git
+    git clone https://github.com/Bruno-BRG/neoBASIC.git
     ```
 2. Navigate to the project directory:
     ```sh
-    cd basic-interpreter
+    cd neoBASIC
     ```
 3. Run the interpreter:
     ```sh
