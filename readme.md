@@ -1,4 +1,4 @@
-# Basic Programming Language Interpreter
+# neoBASIC programming language interpreter
 
 This project is a simple interpreter for a basic programming language inspired by BASIC. It allows you to write and execute simple programs with commands like `print`, `input`, `let`, `if`, `goto`, and more.
 
