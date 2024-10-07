@@ -2,17 +2,17 @@ import sys
 import os
 
 def run():
-    print("Welcome to the Basic Programming Language")
-    print("Type 'quit' to exit")
-    print("Type 'help' to get help")
-    print("Type 'list' to list all the commands")
-    print("Type 'run' to run the program")
-    print("Type 'clear' to clear the screen")
-    print("Type 'save' to save the program")
-    print("Type 'load' to load the program")
-    print("Type 'new' to start a new program")
-    print("Type 'edit' to edit the program")
-    print("Type 'delete' to delete the program")
+    print("Bem vindo a linguagem de programação neoBASIC")
+    print("Type 'quit' para sair")
+    print("Type 'help' para obter ajuda")
+    print("Type 'list' para listar os comandos no programa")
+    print("Type 'run' para executar o programa")
+    print("Type 'clear' para limpar a tela")
+    print("Type 'save' para salvar o programa")
+    print("Type 'load' para carregar um programa")
+    print("Type 'new' para iniciar um novo programa")
+    print("Type 'edit' para editar programa")
+    print("Type 'delete' para deletar o programa")
 
     program = []
     variables = {}
@@ -28,7 +28,7 @@ def run():
             print("2. input - Recebe um valor do usuario (Exemplo: input 'Qual seu nome ')")
             print("3. let - Salva um valor a uma variavel (Exemplo: let x = 10)")
             print("4. if - Condição (Exemplo if x > 10 then print 'x e maior que 10')")
-            print("5. goto - Vai para uma linha especifica (Exemplor: goto 10)")
+            print("5. goto - Vai para uma linha especifica (Exemplo: goto 10)")
             print("6. end - Termina o programa")
             print("7. list - Lista todos os comandos no programa")
             print("8. run   - Executa o programa")
@@ -71,22 +71,22 @@ def run():
         elif command == "clear":
             os.system("cls")
         elif command == "save":
-            filename = input("Enter the filename: ")
+            filename = input("Digite o nome do arquivo: ")
             with open(filename, "w") as file:
                 for line in program:
                     file.write(line + "\n")
         elif command == "load":
-            filename = input("Enter the filename: ")
+            filename = input("Digite o nome do arquivo: ")
             with open(filename, "r") as file:
                 program = file.readlines()
         elif command == "new":
             program = []
         elif command == "edit":
-            line_number = int(input("Enter the line number: "))
-            line = input("Enter the line: ")
+            line_number = int(input("Digite o numero da linha: "))
+            line = input("Digite o numero da linha: ")
             program[line_number - 1] = line
         elif command == "delete":
-            line_number = int(input("Enter the line number: "))
+            line_number = int(input("Digite o numero da linha: "))
             del program[line_number - 1]
         else:
             if command.startswith("let"):
