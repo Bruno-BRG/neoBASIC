@@ -14,7 +14,7 @@ This project is a simple interpreter for a basic programming language inspired b
     ```
 3. Run the interpreter:
     ```sh
-    python app.py
+    python main.py
     ```
 
 ## Usage
