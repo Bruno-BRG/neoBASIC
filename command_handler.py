@@ -56,65 +56,71 @@ class CommandHandler:
         while i < len(self.program):
             line = self.program[i]
             if line.startswith("print"):
-                expr = line[6:].strip()
-                if expr in self.variables.data:
-                    print(self.variables.data[expr])
-                else:
-                    print(eval(expr, {}, self.variables.data))
+                self.handle_print(line)
             elif line.startswith("input"):
-                var = line[6:].strip()
-                value = input(var + ": ")
-                self.variables.data[var] = value
+                self.handle_input(line)
             elif line.startswith("let"):
-                var, expr = line[4:].split("=", 1)
-                var = var.strip()
-                expr = expr.strip()
-                self.variables.data[var] = eval(expr, {}, self.variables.data)
+                self.handle_let(line)
             elif line.startswith("if"):
-                condition, action = line[3:].split("then", 1)
-                if eval(condition.strip(), {}, self.variables.data):
-                    self.program.append(action.strip())
+                self.handle_if(line)
             elif line.startswith("goto"):
-                # Implement goto logic if needed
-                pass
+                self.handle_goto(line)
             elif line.startswith("end"):
                 break
             elif line.startswith("for"):
-                parts = line[4:].split()
-                var = parts[0]
-                start = int(parts[2])
-                end = int(parts[4])
-                body = " ".join(parts[6:-1])
-                self.buffer.append(body)
-                for value in range(start, end + 1):
-                    self.variables.data[var] = value
-                    for buf_line in self.buffer.lines:
-                        if buf_line.startswith("print"):
-                            expr = buf_line[6:].strip()
-                            if expr in self.variables.data:
-                                print(self.variables.data[expr])
-                            else:
-                                print(eval(expr, {}, self.variables.data))
-                        elif buf_line.startswith("input"):
-                            var = buf_line[6:].strip()
-                            value = input(var + ": ")
-                            self.variables.data[var] = value
-                        elif buf_line.startswith("let"):
-                            var, expr = buf_line[4:].split("=", 1)
-                            var = var.strip()
-                            expr = expr.strip()
-                            self.variables.data[var] = eval(expr, {}, self.variables.data)
-                        elif buf_line.startswith("if"):
-                            condition, action = buf_line[3:].split("then", 1)
-                            if eval(condition.strip(), {}, self.variables.data):
-                                self.program.append(action.strip())
-                        elif buf_line.startswith("goto"):
-                            # Implement goto logic if needed
-                            pass
-                        elif buf_line.startswith("end"):
-                            break
-                self.buffer.clear()
+                self.handle_for(line)
             i += 1
+
+    def handle_print(self, line):
+        expr = line[6:].strip()
+        if expr in self.variables.data:
+            print(self.variables.data[expr])
+        else:
+            print(eval(expr, {}, self.variables.data))
+
+    def handle_input(self, line):
+        var = line[6:].strip()
+        value = input(var + ": ")
+        self.variables.data[var] = value
+
+    def handle_let(self, line):
+        var, expr = line[4:].split("=", 1)
+        var = var.strip()
+        expr = expr.strip()
+        self.variables.data[var] = eval(expr, {}, self.variables.data)
+
+    def handle_if(self, line):
+        condition, action = line[3:].split("then", 1)
+        if eval(condition.strip(), {}, self.variables.data):
+            self.program.append(action.strip())
+
+    def handle_goto(self, line):
+        # Implement goto logic if needed
+        pass
+
+    def handle_for(self, line):
+        parts = line[4:].split()
+        var = parts[0]
+        start = int(parts[2])
+        end = int(parts[4])
+        body = " ".join(parts[6:-1])
+        self.buffer.append(body)
+        for value in range(start, end + 1):
+            self.variables.data[var] = value
+            for buf_line in self.buffer.lines:
+                if buf_line.startswith("print"):
+                    self.handle_print(buf_line)
+                elif buf_line.startswith("input"):
+                    self.handle_input(buf_line)
+                elif buf_line.startswith("let"):
+                    self.handle_let(buf_line)
+                elif buf_line.startswith("if"):
+                    self.handle_if(buf_line)
+                elif buf_line.startswith("goto"):
+                    self.handle_goto(buf_line)
+                elif buf_line.startswith("end"):
+                    break
+        self.buffer.clear()
 
     def save_program(self):
         filename = input("Digite o nome do arquivo: ")
