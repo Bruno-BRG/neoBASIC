@@ -1,0 +1,3 @@
+print "qual seu nome:" 
+input nome
+print nome
